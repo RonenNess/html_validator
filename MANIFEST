@@ -4,3 +4,4 @@ setup.py
 html_validator\README.md
 html_validator\__init__.py
 html_validator\html_validator.py
+html_validator\vnu.jar
