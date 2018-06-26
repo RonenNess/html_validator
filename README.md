@@ -16,7 +16,7 @@ In addition you'll need to have Java installed on your machine and Java path pro
 
 ## How to use
 
-```html_validator``` provide a single function, ```validate```, which receieve an HTML file path or a list of HTML files and validate them:
+```html_validator``` provide a single function, ```validate```, which receive an HTML file path or a list of HTML files and validate them:
 
 ```py
 from html_validator import validate
@@ -48,9 +48,6 @@ python test_all.py
 
 Note that the tests are not included in the pypi package, so to run them please clone the git repository from [GitHub](https://github.com/RonenNess/html_validator).
 
-## Changes
-
-.
 
 ## Contact
 
