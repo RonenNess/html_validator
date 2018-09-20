@@ -14,6 +14,9 @@ pip install html_validator
 
 In addition you'll need to have Java installed on your machine and Java path properly set (so you can execute jar files from shell / cmd prompt).
 
+## Version
+This library is only compatible with Python 2.
+
 ## How to use
 
 ```html_validator``` provide a single function, ```validate```, which receive an HTML file path or a list of HTML files and validate them:
