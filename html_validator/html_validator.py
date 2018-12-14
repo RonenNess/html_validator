@@ -6,7 +6,7 @@ Wraps the v.Nu HTML validator.
 Author: Ronen Ness.
 Since: 2017.
 """
-from __future__ import print_function
+
 import os
 import subprocess
 
@@ -80,7 +80,7 @@ class ValidationError:
         return "ValidationError(%s, %s, %d, %s)" % (self.type, self.file, self.line, self.description)
 
     def __unicode__(self):
-        return unicode(str(self))
+        return str(str(self))
 
     def __eq__(self, other):
         return self._origin_msg == other._origin_msg
@@ -122,14 +122,14 @@ def validate(files, verbose=False):
             raise MissingHtmlFile("Missing HTML file to test: " + filename)
 
     # build the command to execute
-    cmd = ["java", "-Xss512k", "-jar", '%s' % vnu_path] + files
+    cmd = ["java", "-Xss2048k", "-jar", '%s' % vnu_path] + files
     if verbose:
         print("Execute command:", " ".join(cmd))
 
     # run the command to perform the validation
     try:
         # execute and get output
-        output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+        output = subprocess.Popen(cmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
         if verbose:
             print("Command output:", str(output)[:256] + "...")
 
@@ -152,6 +152,7 @@ def validate(files, verbose=False):
 
     # convert to validation error instances and return
     ret = []
+    errs = errs.decode("utf-8")
     for i in errs.split('\n'):
         i = i.strip()
         if len(i) > 0:
